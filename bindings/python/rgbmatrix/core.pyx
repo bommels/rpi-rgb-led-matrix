@@ -87,6 +87,10 @@ cdef class FrameCanvas(Canvas):
         def __get__(self): return (<cppinc.FrameCanvas*>self.__getCanvas()).brightness()
         def __set__(self, val): (<cppinc.FrameCanvas*>self.__getCanvas()).SetBrightness(val)
 
+    property rotation:
+        def __get__(self): return (<cppinc.FrameCanvas*>self.__getCanvas()).rotation()
+        def __set__(self, val): (<cppinc.FrameCanvas*>self.__getCanvas()).SetRotation(val)
+
 
 cdef class RGBMatrixOptions:
     def __cinit__(self):
@@ -127,6 +131,10 @@ cdef class RGBMatrixOptions:
     property brightness:
         def __get__(self): return self.__options.brightness
         def __set__(self, uint8_t value): self.__options.brightness = value
+
+    property rotation:
+        def __get__(self): return self.__options.rotation
+        def __set__(self, uint8_t value): self.__options.rotation = value
 
     property scan_mode:
         def __get__(self): return self.__options.scan_mode
@@ -227,6 +235,10 @@ cdef class RGBMatrix(Canvas):
     property brightness:
         def __get__(self): return self.__matrix.brightness()
         def __set__(self, brightness): self.__matrix.SetBrightness(brightness)
+
+    property rotation:
+        def __get__(self): return self.__matrix.rotation()
+        def __set__(self, rotation): self.__matrix.SetRotation(rotation)
 
     property height:
         def __get__(self): return self.__matrix.height()

@@ -21,6 +21,8 @@ cdef extern from "led-matrix.h" namespace "rgb_matrix":
         bool luminance_correct()
         void SetBrightness(uint8_t)
         uint8_t brightness()
+        void SetRotation(uint8_t)
+        uint8_t rotation()
         FrameCanvas *CreateFrameCanvas()
         FrameCanvas *SwapOnVSync(FrameCanvas*)
 
@@ -29,6 +31,8 @@ cdef extern from "led-matrix.h" namespace "rgb_matrix":
         uint8_t pwmbits()
         void SetBrightness(uint8_t)
         uint8_t brightness()
+        void SetRotation(uint8_t)
+        uint8_t rotation()
 
     struct RuntimeOptions:
       RuntimeOptions() except +
@@ -57,6 +61,7 @@ cdef extern from "led-matrix.h" namespace "rgb_matrix::RGBMatrix":
         int scan_mode
         int row_address_type
         int multiplexing
+        int rotation
 
         bool disable_hardware_pulsing
         bool show_refresh_rate
